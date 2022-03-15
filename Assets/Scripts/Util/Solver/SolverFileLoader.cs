@@ -17,6 +17,7 @@ public class SolverFileLoader : MonoBehaviour
         if(_fileContents.ContainsKey(fileName)){
             return _fileContents[fileName];
         }
+        Debug.LogErrorFormat("Failed to find file {0}. Did you add it to Solver File Loader in the editor?", fileName);
         return new string[]{};
     }
 

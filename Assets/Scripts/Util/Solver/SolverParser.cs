@@ -625,6 +625,7 @@ public static class SolverParser
     public static void Main(string file_name)
     {
 
+        Debug.Log("Loading: " + file_name);
 
         List<string> vc_str = new List<string>();
 
@@ -667,7 +668,7 @@ public static class SolverParser
         mid_point = ((BOARDSIZE - 1) / 2) * BOARDSIZE + (BOARDSIZE / 2);
        
        
-        Debug.LogFormat("Found {0} patterns",all_patterns.Count);
+        Debug.LogFormat("Found {0} patterns. Midpoint {1}",all_patterns.Count, mid_point);
 
         for (int i = 0; i < BOARDSIZE; i++)
         {                        

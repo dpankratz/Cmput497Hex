@@ -6,6 +6,7 @@ public class BotsDisplay : Display
 {
     private readonly string _3x3StrategyFile = Application.streamingAssetsPath + "/hex33.txt";
     private readonly string _4x4StrategyFile =  Application.streamingAssetsPath + "/hex44.txt";
+    private readonly string _5x5StrategyFile = Application.streamingAssetsPath + "/hex55.txt";
     private readonly string _9x9StrategyFile =  Application.streamingAssetsPath + "/hex99-3.txt";
 
 
@@ -43,6 +44,16 @@ public class BotsDisplay : Display
         Settings.BoardDimensions = new Vector2Int(9,9);
         SolverParser.Main(_9x9StrategyFile);
         _gameManager.ResetGameWithNewAgents(new Agent[]{_jingYangPlayer,_jingYangOpponent});
+    }
+
+    // Add new strategy files to Solver file loader in Unity editor.
+
+    public void FiveByFive()
+    {
+        StartBotGame();
+        Settings.BoardDimensions = new Vector2Int(5, 5);
+        SolverParser.Main(_5x5StrategyFile);
+        _gameManager.ResetGameWithNewAgents(new Agent[] { _jingYangPlayer, _jingYangOpponent });
     }
 
     public void FourByFour(){
