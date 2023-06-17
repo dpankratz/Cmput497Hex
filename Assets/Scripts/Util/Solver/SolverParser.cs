@@ -359,7 +359,13 @@ public static class SolverParser
             for (j = 1; j < cur_pattern.vc_vc_PPs[bn][i].Count; j++)
             {
                 int m = cur_pattern.vc_vc_PPs[bn][i][j];
-                ch_pa[j] = local_global[m];
+                if (local_global.ContainsKey(m))
+                {
+                    ch_pa[j] = local_global[m];
+                } else
+                {
+                    Debug.LogErrorFormat("Move {0} is not found in PP {1} in Decomposition {2} (out of {3}) in Branch Number {4} in Rule Number {5}", m, j, i, ND, bn, cur_pattern.RN);
+                }
             }
             Pattern p = new Pattern(all_patterns[ch_id]);
             
@@ -459,6 +465,7 @@ public static class SolverParser
 
     public static string IssueCommand(string command)
     {
+        Debug.Log(command);
         text = command;
         
         if (text.Contains("genmove b")  || text.Contains("genmove black") )
@@ -510,7 +517,7 @@ public static class SolverParser
             //cerr << "white move: " << point << "\n" << endl;
             if (!empty(board, point))
             {
-                Debug.LogError("occupied cell");
+                Debug.LogErrorFormat("occupied cell. Command {0}", command);
                 return "";
             }
             play(ref board, tokens[1][0], white_move);

@@ -54,7 +54,8 @@ public class JingYangOpponent : Player
 
     private void VisualizePatterns(){
         _visualization.RemoveAllHighlights();
-        var patterns = SolverParser.IssueCommand(BenzeneCommands.show_jypattern_list).Trim();     
+        var patterns = SolverParser.IssueCommand(BenzeneCommands.show_jypattern_list).Trim();
+
         var points = patterns.Split(' ');
         var location = Vector2Int.zero;
         var patternIndex = 0;
@@ -85,7 +86,8 @@ public class JingYangOpponent : Player
 
     private void VisualizeBranches(){
         _visualization.RemoveAllHighlights();
-        var patterns = SolverParser.IssueCommand(BenzeneCommands.show_jybranch_list).Trim();     
+        var patterns = SolverParser.IssueCommand(BenzeneCommands.show_jybranch_list).Trim();
+        Debug.Log(patterns);
         var points = patterns.Split(' ');
         var location = Vector2Int.zero;
         var _seenLocals = new HashSet<int>();
